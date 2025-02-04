@@ -1,0 +1,60 @@
+@import url('https://fonts.googleapis.com/css2?family=Macondo&family=Sofia&family=Trirong:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+
+.item{
+    color: black;
+    width: 290px;
+    margin-top: 20px;
+    /* background-color: #F0F0D7; */
+    background-color: inherit;
+    border: 3px solid #AAB99A;
+    
+    
+}
+.item img{
+    width: 80%;
+    padding: 30px;
+}
+.item p{
+    /* margin: 8px 8px; */
+    padding: 0 30PX;
+    font-family: "trirong", serif;
+}
+.item-price{
+    display: flex;
+    justify-content: space-around;
+    gap: 20px;
+    padding: 20px 30px;
+    font-family: "trirong", serif;
+}
+.item-price-new{
+    font-size: 20px;
+    font-weight: 600;
+    color: black;
+
+}
+.item-price-old{
+    font-size: 18px;
+    font-weight: 500;
+    color: rgb(85, 71, 71);
+    text-decoration: line-through;
+}
+.Order button{
+    padding: 8px 17px;
+    font-size: 17px;
+    font-family: "Trinrong",serif;
+    border-radius: 2px;
+    border: 1px solid black;
+    cursor: pointer;
+    /* margin-right: 20px; */
+    background-color: inherit;
+    transition: background-color 0.5s ease-out;
+}
+.Order button:hover{
+    color: #AAB99A;
+    background-color: black;
+}
+/* .item :hover{
+    /* box-shadow: 10px 3px 34px -16px rgba(0,0,0,0.75); */
+    /* cursor: pointer; */
+ 

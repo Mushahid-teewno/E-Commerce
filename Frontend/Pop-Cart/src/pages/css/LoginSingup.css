@@ -1,0 +1,62 @@
+.loginSignup{
+    background-color: #D0DDD0;
+    height: 90vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.login-page{
+    width: 35%;
+    height: 70vh;
+    border: 1px solid #727D73;
+    background-color: inherit;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: "Trirong",serif;
+    
+
+}
+.form{
+    width: 350px;
+    text-align: center;
+}
+.form h1{
+    text-align: center;
+    margin-bottom: 70px;
+}
+.form p{
+    padding-top: 17px;
+    font-size: 15px;
+    margin-top: 27px;
+}
+.form input{
+    display: block;
+    width: 97%;
+    /* border-radius: 10px; */
+    padding: 13px 0;
+    padding-left: 10px;
+    margin-top: 20px;
+    background-color: transparent;
+    border: 1px solid gray;
+}
+.form button{
+    padding: 13px 0;
+    font-size: 15px;
+    margin-top: 20px;
+    cursor: pointer;
+    border:1px solid #727D73;
+    width: 100%;
+    background-color: #D0DDD0;
+}
+.form button:hover{
+    background-color: black;
+    color: #D0DDD0;
+}
+.checkbox{
+    display: flex;
+}
+.form .check{
+    width: 20px;
+    display: inline-block;
+}

@@ -1,0 +1,115 @@
+.cart-items-outer{
+    background-color: #D0DDD0;
+    padding: 80px;
+    font-family: "trirong",serif;
+}
+.cart-items{
+    width: 100%;
+    /* max-width: 80%; */
+    padding: 0;
+    /* border:1px solid #727D73; */
+ 
+    /* margin: 100px auto; */
+}
+.headings{
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr 1fr 1fr 1fr;
+    align-items: center;
+    background-color: #B0BEA9;
+    color: #444945;
+    border: 1px solid #727D73;
+    height: 40px;
+    padding-left:6px ;
+
+}
+.headings p{
+    font-weight: 600;
+}
+.sofa{
+    font-size: 17px;
+    font-weight: 550;
+    padding-top: 10px;
+    padding-left:8px ;
+    margin: 0;
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr 1fr 1fr 1fr;
+    align-items: center;
+    
+    border:1px solid #727D73;
+    border-top: none;
+
+    
+}
+/* .cart-items hr{
+    width: 100vw;
+    height: 2px;
+    margin: 0;
+    grid-column: span 6;
+    margin-top: 10px;
+
+} */
+
+.sofa .product-img{
+    height: 100px;
+    margin-bottom: 10px;
+}
+.sofa button{
+    padding: 5px 5px;
+    width: 30px;
+    background-color: inherit;
+    border: 1px solid black;
+}
+.remove-icon{
+    width: 10px;
+    height: 10px;
+    cursor: pointer;
+}
+.cart-calc-outer{
+    margin-top: 50px;
+    
+}
+
+.cart-calc{
+    max-width: 400px;
+    /* margin: 100px auto; */
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    /* padding: 20px; */
+    border:1px solid #444945;
+    justify-content: space-between;
+}
+.cart-calc h1{
+    background-color: #B0BEA9;
+    color: #444945;
+    border-bottom:1px solid #444945;
+}
+.subtotals{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.price{
+    font-weight: 550;   
+}
+
+.cart-calc button{
+    padding: 13px 0;
+    font-size: 20px;
+    margin-top: 20px;
+    cursor: pointer;
+    background-color: inherit;
+    color: #444945;
+    border: 1px solid gray;
+    width: 90%;
+}
+.cart-calc button:hover{
+    background-color: black;
+    color: #B0BEA9;
+}
+.subtotals-border-bottom-outer{
+    padding: 20px;
+}
+.border-bottom{
+    border-bottom: 1px solid black;
+}

@@ -1,0 +1,40 @@
+.category{
+    display: flex;
+    flex-direction: column;
+    background-color: #D0DDD0;
+    /* align-items: center; */
+    /* margin: auto; */
+}
+.category-info{
+    font-family: "trirong",serif;
+    margin: 50px 0 0 110px;
+    color: #6d7465;
+    
+
+}
+.category-info h1{
+    font-size:100px;
+
+}
+.banner{
+    max-width: 100%;
+}
+.width{
+    width: 100%;
+}
+.category-items{
+
+    /* max-width: 100%; */
+    /* display: grid;
+    grid-template-columns: 1fr 1fr 1fr  1fr; */
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    row-gap: 80px;
+
+    gap: 10px;
+    max-width: 85%;
+    margin:  auto;
+    margin-bottom: 30px;
+}

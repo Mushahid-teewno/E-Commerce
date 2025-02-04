@@ -1,0 +1,81 @@
+@import url('https://fonts.googleapis.com/css2?family=Macondo&family=Sofia&family=Trirong:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+.navbar{
+    max-width: 100%;
+    height: 100px;
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #727D73;
+    
+}
+.logo h1{
+    /* width: 120px; */
+    cursor: pointer;
+    font-family: "Macondo", serif;
+    font-weight: 100;
+    margin-left: 20px;
+}
+/* .Category-Outer{
+    display: flex;
+} */
+.nav-category{
+    /* display: flex; */
+    color: rgb(0, 0, 0);
+}
+.nav-category ul li{
+    display: inline-block;
+    margin-left: 40px;
+    font-size: 20px;
+    cursor: pointer;
+    color: black;
+}
+.login{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.login button{
+    padding: 8px 17px;
+    font-size: 16px;
+    border-radius: 2px;
+    border: 2px solid black;
+    cursor: pointer;
+    margin-right: 20px;
+    background-color: #727D73;
+    transition: background-color 0.5s ease;
+}
+.login button:hover{
+    color: #727D73;
+    background-color: black;
+}
+
+.login img{
+    cursor: pointer;
+    margin-right: 10px;
+}
+.nav-count{
+    background-color: #F0F0D7;
+    color: #727D73;
+    width: 22px;
+    height: 22px;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: -25px;
+    margin-left: -20px;
+}
+.nav-category ul li hr{
+    width: 80%;
+    height: 3px;
+    background-color: #F0F0D7;
+    border: none;
+    border-radius: 30%;
+    padding: 0;
+}
+.nav-category ul li Link{
+    text-decoration: none;
+    
+}
