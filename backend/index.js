@@ -57,6 +57,13 @@ app.post("/removeproduct", async(req, res)=>{
         res.send("deleted")
 })
 
+//api for getting all the products
+
+app.get("/showproducts", async (req,res)=>{
+    allProducts = await Product.find({});
+    res.send(allProducts)
+})
+
 app.post("/upload", upload.single('file'), (req, res) => {
     res.json({
         success: 1,
