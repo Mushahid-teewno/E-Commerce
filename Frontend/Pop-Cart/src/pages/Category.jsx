@@ -1,15 +1,15 @@
 import React, { useContext } from 'react'
 import './css/category.css'
 import { ShopContext } from '../Context'
-import Offers from '../components/Offers/Offers'
-import offers1 from '../assets/offers1.png'
+// import Offers from '../components/Offers/Offers'
+// import offers1 from '../assets/offers1.png'
 import Item from '../components/Item/Item'
 
 const Category = (props) => {
-   const {all_product} = useContext(ShopContext)
-   console.log({all_product})
+   const {allProducts} = useContext(ShopContext)
+   console.log({allProducts})
 
-   const filteredProducts = all_product.filter(item => item.category === props.category);
+   const filteredProducts = allProducts.filter(item => item.category === props.category);
   
   return (
     <div className='category'>
@@ -27,7 +27,7 @@ const Category = (props) => {
         <div className='category-items'>
           
           
-              {all_product.map((item,i) => {
+              {allProducts.map((item,i) => {
            if (props.category===item.category) {
                
                return(  <Item  key={i} id= {item.id} des = {item.name} image={item.image} new_price={item.new_price} old_price={item.old_price}/> )           

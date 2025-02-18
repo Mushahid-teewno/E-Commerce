@@ -41,7 +41,18 @@ const Addproduct = () => {
     if (response.success)
     {
       fieldData.image = response.imgurl;
+      console.log(fieldData.image)
     }
+
+    await fetch('http://localhost:3000/addproduct',{
+      method:'POST',
+      headers:{
+        accept:'application/json',
+        'content-type':'application/json'
+      },
+      body:JSON.stringify(fieldData),
+    }).then(res => res.json())
+    .then(res=>alert(res.success))
   }
   return (
     <div className='addproduct-page'>

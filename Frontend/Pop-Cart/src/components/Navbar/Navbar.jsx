@@ -36,7 +36,10 @@ const Navbar = () => {
         </ul>
       </div>
       <div className='login'>
-        <Link style={{ textDecoration: "none" }} to='/login'><button>Login</button></Link>
+        {localStorage.getItem('authToken')
+          ? <button onClick={()=>{localStorage.removeItem('authToken'),window.location.reload();}}>Logout</button>
+          : <Link style={{ textDecoration: "none" }} to='/login'><button>Login</button></Link>}
+        {/* <Link style={{ textDecoration: "none" }} to='/login'><button>Login</button></Link> */}
         <Link style={{ textDecoration: "none" }} to='/cart' >   <img src={cart_icon} alt="" />
         </Link>
         <div className='nav-count'>{totalItems}</div>
