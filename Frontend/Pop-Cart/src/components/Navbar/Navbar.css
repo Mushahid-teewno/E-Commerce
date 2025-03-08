@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Macondo&family=Sofia&family=Trirong:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
 .navbar{
-    max-width: 100%;
+    width: 100%;
     height: 100px;
     margin: auto;
     display: flex;
@@ -78,4 +78,152 @@
 .nav-category ul li Link{
     text-decoration: none;
     
+}
+
+
+
+.hamburger {
+    display: none;
+    font-size: 30px;
+    cursor: pointer;
+    margin-left: 20px;
+    margin-right: 10px;
+  }
+  @media (max-width: 1024px) {
+    .navbar {
+        height: 90px; /* Slightly reduced for tablets */
+    }
+
+    .logo h1 {
+        font-size: 24px;
+    }
+
+    .nav-category ul li {
+        font-size: 18px;
+        margin-left: 30px;
+    }
+
+    .login button {
+        font-size: 14px;
+        padding: 6px 14px;
+    }
+
+    .nav-count {
+        width: 20px;
+        height: 20px;
+        font-size: 12px;
+    }
+}
+  
+
+/* Show the hamburger menu and hide nav links on smaller screens */
+@media (max-width: 768px) {
+
+    .navbar {
+        height: 80px; /* Further reduced for mobile */
+    }
+
+    .logo h1 {
+        font-size: 22px;
+        margin-left: 15px;
+    }
+
+    .hamburger {
+        display: block;
+    }
+
+    .nav-category {
+        position: fixed;
+        top: 0;
+        right: -120px; /* Initially hidden */
+        width: 120px;
+        height: 100%;
+        background-color: #727D73;
+        padding: 20px 0;
+        box-shadow: -2px 0 5px rgba(0, 0, 0, 0.2);
+        transition: right 0.3s ease-in-out;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        z-index: 1000;
+    }
+
+    .nav-category.open {
+        right: 0; /* Slide in */
+        display: flex;
+    }
+
+    .nav-category ul {
+        flex-direction: column;
+        width: 100%;
+        text-align: center;
+        margin-top: 30px;
+        padding: 0;
+    }
+
+    .nav-category ul li {
+        display: block;
+        margin: 20px 0;
+        
+        font-size: 18px;
+    }
+    .nav-category ul li hr{
+        width: 40%;
+        margin-left: 46px;
+    }.close-btn {
+        position: absolute;
+        top: 15px;
+        right: 50px;
+        font-size: 24px;
+        cursor: pointer;
+        color: black;
+    }
+    
+
+}
+
+/* Show the nav links normally on larger screens */
+@media (min-width: 769px) {
+    .nav-category {
+        display: block !important; /* Ensure it's always visible */
+        position: static;
+        width: auto;
+        height: auto;
+        background: none;
+        box-shadow: none;
+    }
+}
+
+@media (max-width: 480px) {
+    .navbar {
+        height: 70px;
+        padding: 0 10px;
+    }
+
+    .logo h1 {
+        font-size: 20px;
+    }
+
+    .nav-category {
+        width: 90px;
+    }
+
+    .nav-category ul li {
+        font-size: 14px;
+    }
+
+    .login button {
+        font-size: 10px;
+        padding: 4px 8px;
+    }
+
+    .nav-count {
+        width: 16px;
+        height: 16px;
+        font-size: 9px;
+    }
+
+    .hamburger {
+        font-size: 24px;
+    }
 }

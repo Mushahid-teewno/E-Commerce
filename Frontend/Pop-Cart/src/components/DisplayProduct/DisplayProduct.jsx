@@ -8,6 +8,9 @@ import { ShopContext } from '../../Context'
 const DisplayProduct = ({ product }) => {
 
     const { addToCart } = useContext(ShopContext)
+    if (!product) {
+        return <p>Loading product...</p>; // Prevents crash
+    }
     console.log(product)
     return (
         <div className='display-product-parent'>

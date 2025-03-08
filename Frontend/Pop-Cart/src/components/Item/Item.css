@@ -4,26 +4,49 @@
 .item{
     color: black;
     width: 290px;
+    height: 550px;
     margin-top: 20px;
     /* background-color: #F0F0D7; */
     background-color: inherit;
     border: 3px solid #AAB99A;
+    display: flex; /* ✅ Ensures consistent spacing */
+    flex-direction: column; /* ✅ Aligns items vertically */
+    align-items: center; /* ✅ Centers content */
+    justify-content: space-between; 
+    padding-bottom: 15px;
+    transition: transform 0.3s ease-in-out;
     
     
 }
+.item:hover {
+    transform: scale(1.02); /* ✅ Slight scale effect on hover */
+}
+
 .item img{
     width: 80%;
+    height: 390px;
+    max-height: 60%;
     padding: 30px;
+    object-fit: contain;
+    transition: transform 0.3s ease-in-out;
+}
+.item:hover img {
+    transform: scale(1.1); /* ✅ Image enlarges slightly */
 }
 .item p{
-    /* margin: 8px 8px; */
-    padding: 0 30PX;
+    padding: 0 20px;
     font-family: "trirong", serif;
+    text-align: center;
+    flex-grow: 1; /* ✅ Allows text to adjust dynamically */
+    display: block;
+   
+   text-align: center;
+   width: 80%;
 }
 .item-price{
     display: flex;
-    justify-content: space-around;
-    gap: 20px;
+    justify-content: space-between;
+    gap: 40px;
     padding: 20px 30px;
     font-family: "trirong", serif;
 }
@@ -58,3 +81,79 @@
     /* box-shadow: 10px 3px 34px -16px rgba(0,0,0,0.75); */
     /* cursor: pointer; */
  
+
+
+
+
+    @media (max-width: 1024px) {
+        .item {
+            width: 250px; /* ✅ Adjust width for smaller screens */
+            height: 500px;
+        }
+        .item img {
+            height: 320px; /* ✅ Scale image proportionally */
+        }
+        .item p {
+            font-size: 14px; /* ✅ Smaller text */
+            padding: 0 15px;
+        }
+        .Order button {
+            font-size: 15px; /* ✅ Adjust button size */
+            padding: 6px 14px;
+        }
+    }
+    
+    /* 🔹 Mobile Devices */
+    @media (max-width: 768px) {
+        .item {
+            width: 210px;
+            height: 400px; /* ✅ Adjust height dynamically */
+            padding-bottom: 10px;
+        }
+        .item img {
+            height: 280px; /* ✅ Further reduce image height */
+        }
+        .item p {
+            font-size: 12px; /* ✅ Even smaller text */
+        }
+        .item-price {
+            padding: 10px 20px;
+            gap: 20px;
+        }
+        .Order button {
+            font-size: 14px;
+            padding: 5px 12px;
+        }
+    }
+    
+    /* 🔹 Small Mobile Screens */
+    @media (max-width: 480px) {
+        .item {
+            width: 160px; /* ✅ Compact for very small screens */
+        }
+        .item img {
+            height: 220px; /* ✅ Reduce image size */
+        }
+        .item p {
+            font-size: 11px;
+            padding: 0 10px;
+        }
+        .Order button {
+            font-size: 13px;
+            padding: 4px 10px;
+        }
+        .item-price {
+            padding: 10px 20px;
+            gap: 10px;
+            
+        }
+        .item-price-new{
+            font-size: 15px;
+            
+        
+        }
+        .item-price-old{
+            font-size: 14px;
+            
+        }
+    }

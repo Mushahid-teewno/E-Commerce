@@ -9,6 +9,7 @@ import { ShopContext } from '../../Context'
 const Navbar = () => {
   const [State, setState] = useState('shop');
   const { totalItems } = useContext(ShopContext)
+  const [menuOpen, setMenuOpen] = useState(false);
 
   const location = useLocation();
 
@@ -26,13 +27,34 @@ const Navbar = () => {
         {/* <img src={logo} alt="" /> */}
         <h1 onClick={() => { setState('shop') }}> <Link style={{ textDecoration: "none", color: 'inherit' }} to='/'>Pop Cart</Link></h1>
       </div>
+      
 
-      <div className='nav-category'>
+      {/* <div className={`nav-category ${menuOpen ? 'open' : ''}`}>
         <ul>
-          <li onClick={() => { setState('shop') }}> <Link style={{ textDecoration: "none", color: 'inherit' }} to='/'>Shop</Link> {State === 'shop' ? <hr /> : <></>}</li>
-          <li onClick={() => { setState('men') }}><Link style={{ textDecoration: "none", color: 'inherit' }} to='/men'>Men</Link>  {State === 'men' ? <hr /> : <></>}</li>
-          <li onClick={() => { setState('women') }}><Link style={{ textDecoration: "none", color: 'inherit' }} to='/women'>Women</Link> {State === 'women' ? <hr /> : <></>}</li>
-          <li onClick={() => { setState('kids') }}><Link style={{ textDecoration: "none", color: 'inherit' }} to='/kids'>Kids</Link> {State === 'kids' ? <hr /> : <></>}</li>
+          <li onClick={() => setState('shop')}> 
+            <Link to='/'>Shop</Link> {State === 'shop' ? <hr /> : null}
+          </li>
+          <li onClick={() => setState('men')}>
+            <Link to='/men'>Men</Link> {State === 'men' ? <hr /> : null}
+          </li>
+          <li onClick={() => setState('women')}>
+            <Link to='/women'>Women</Link> {State === 'women' ? <hr /> : null}
+          </li>
+          <li onClick={() => setState('kids')}>
+            <Link to='/kids'>Kids</Link> {State === 'kids' ? <hr /> : null}
+          </li>
+        </ul>
+      </div> */}
+
+      <div className={`nav-category ${menuOpen ? 'open' : ''}`}>
+        <ul>
+        <span className="close-btn" onClick={() => setMenuOpen(false)}>
+                    &times;
+                </span>
+          <li onClick={() => { setState('shop'),setMenuOpen(false) }}> <Link style={{ textDecoration: "none", color: 'inherit' }} to='/'>Shop</Link> {State === 'shop' ? <hr /> : <></>}</li>
+          <li onClick={() => { setState('men'), setMenuOpen(false) }}><Link style={{ textDecoration: "none", color: 'inherit' }} to='/men'>Men</Link>  {State === 'men' ? <hr /> : <></>}</li>
+          <li onClick={() => { setState('women'),setMenuOpen(false) }}><Link style={{ textDecoration: "none", color: 'inherit' }} to='/women'>Women</Link> {State === 'women' ? <hr /> : <></>}</li>
+          <li onClick={() => { setState('kids') ,setMenuOpen(false)}}><Link style={{ textDecoration: "none", color: 'inherit' }} to='/kids'>Kids</Link> {State === 'kids' ? <hr /> : <></>}</li>
         </ul>
       </div>
       <div className='login'>
@@ -44,7 +66,12 @@ const Navbar = () => {
         </Link>
         <div className='nav-count'>{totalItems}</div>
 
+        <div className="hamburger" onClick={() => setMenuOpen(!menuOpen)}>
+        ☰
       </div>
+
+      </div>
+      
     </div>
   )
 }

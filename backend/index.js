@@ -32,7 +32,7 @@ app.post("/addproduct", async (req, res) => {
 
         if (products.length > 0) {
             productsArray = products.slice(-1);
-            theProduct = productsArray[0];
+            let theProduct = productsArray[0];
             id = theProduct.id + 1;
         }
         else {
@@ -78,6 +78,7 @@ app.get("/showproducts", async (req, res) => {
     allProducts = await Product.find({});
     res.send(allProducts)
 })
+
 
 app.post("/upload", upload.single('file'), (req, res) => {
     res.json({
@@ -146,4 +147,86 @@ app.post('/signin', async (req, res) => {
         console.error(error);
         res.status(500).json({ success: false, message: 'Server error' });
     }
+})
+
+
+
+
+// Middleware to verify token and get user ID
+const verifyToken = (req, res, next) => {
+    const token = req.header("Authorization");
+    if (!token) return res.status(401).json({ success: false, message: "Access denied" });
+
+    try {
+        const decoded = jwt.verify(token, process.env.JWT_SECRET);
+        req.userId = decoded.user.id; // Attach user ID to request
+        next();
+    } catch (error) {
+        res.status(400).json({ success: false, message: "Invalid token" });
+    }
+};
+
+app.post("/add-to-cart", verifyToken, async (req, res) => {
+    try {
+        const { itemId } = req.body; // Get productId from request
+
+        console.log(itemId)
+
+        if (!itemId) {
+            return res.status(400).json({ success: false, message: "Missing productId" });
+        }
+
+        const user = await User.findById(req.userId);
+        
+        if (!user) {
+            return res.status(404).json({ success: false, message: "User not found" });
+        }
+
+        // Ensure cartData exists
+        if (!user.cartData) {
+            user.cartData = {};
+        }
+
+        // Increase the quantity or set it to 1 if not present
+        user.cartData[itemId] = (user.cartData[itemId] || 0) + 1;
+
+        try {
+            user.markModified("cartData");
+            const result = await user.save();
+            
+        } catch (error) {
+            console.error("Error saving user:", error);
+        }
+        res.status(200).json({ success: true, message: "Product added to cart", cartData: user.cartData });
+
+    } catch (error) {
+        console.error("Error adding to cart:", error);
+        res.status(500).json({ success: false, message: "Internal server error" });
+    }
+});
+
+app.post('/remove-from-cart', verifyToken, async(req,res)=>{
+
+    const { itemId } = req.body;
+    const user = await User.findById(req.userId);
+    if (user.cartData[itemId]>0) {
+        user.cartData[itemId]  -= 1;
+    }
+    
+
+        try {
+            user.markModified("cartData");
+            const result = await user.save();
+        }
+        catch(error){
+            console.error("Error saving user:", error);
+        }
+        res.status(200).json({ success: true, message: "Product removed from cart", cartData: user.cartData });
+})
+
+app.post('/get-cartData',verifyToken, async (req,res)=>{
+    console.log(req.userId)
+    const user =  await User.findById(req.userId)
+    res.json({ success: true, cartData: user.cartData });
+    console.log(user.cartData)
 })

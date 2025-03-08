@@ -37,19 +37,97 @@ export const ShopContext = createContext(null);
          setAllProducts(data)
          setCartItem(getDefaultCart(data))
      }
+const fetchcart = async ()=>{
+    if (localStorage.getItem('authToken')) {
+        let response= await fetch('http://localhost:3000/get-cartData',{
+            method:'POST',
+            headers:{
+                accept:'application/json',
+                "Authorization": localStorage.getItem("authToken"),
+                'content-type':'application/json'
+            },
+       
+    
+        
+            
+        });
+        const data = await response.json();
 
 
+         if (data.success) {
+            setCartItem((prev) => ({
+                ...prev,
+                ...data.cartData, //  Merge instead of replacing
+            })); // Update cart data only if the request is successful
+         } else {
+             console.error("Failed to fetch cart data:", data.message);
+         }
+    }
+    
+}
 
-    const addToCart =(itemId) =>{
-        setCartItem((prev)=>({
-            ...prev,[itemId]: prev[itemId] +1
-        }))
+
+    const addToCart =async (itemId) =>{
+       
+
+
+        try {
+            const response = await fetch("http://localhost:3000/add-to-cart", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                    "Authorization": localStorage.getItem("authToken") // User must be logged in
+                },
+                body: JSON.stringify({ itemId }), // Send only productId
+            });
+    
+            const data = await response.json();
+            if (data.success) {
+                setCartItem(data.cartData)
+            }
+            else{
+                setCartItem((prev)=>({
+                    ...prev,[itemId]: prev[itemId] +1
+                 }))
+            }
+            
+        } catch (error) {
+            console.error("Error adding to cart:", error);
+        }
+    
     }
 
-    const removeFromCart =(itemId) =>{
-        setCartItem((prev)=>({
-            ...prev,[itemId]: prev[itemId] -1
-        }))
+    const removeFromCart =async (itemId) =>{
+
+        try {
+            const response = await fetch("http://localhost:3000/remove-from-cart", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                    "Authorization": localStorage.getItem("authToken") // User must be logged in
+                },
+                body: JSON.stringify({ itemId }), // Send only productId
+            });
+    
+            const data = await response.json();
+
+            if (data.success) {
+                setCartItem(data.cartData)
+            }
+            else{
+                setCartItem((prev) => ({
+                    ...prev,
+                    [itemId]: Math.max(0, prev[itemId] - 1), 
+                }));
+            }
+
+        }
+            catch(error){
+                console.log(error)
+            }
+
+
+       
     }
 
     useEffect(() => {
@@ -60,10 +138,18 @@ export const ShopContext = createContext(null);
             return total;
         }, 0);
         setSubtotal(newSubtotal);
+
+       
     }, [CartItem]);
 
     useEffect(() => {
-        fetchProducts();
+        const fetchData = async () => {
+            await fetchProducts(); // Ensure products are fetched first
+            fetchcart(); // Then fetch cart data
+        };
+        
+        fetchData();
+
       }, []);
 
     const totalItems = allProducts.reduce((total, e) => {
@@ -73,7 +159,7 @@ export const ShopContext = createContext(null);
     const   contextValue = {allProducts,CartItem,totalItems, subtotal, addToCart,removeFromCart}
 
      
-      console.log(CartItem);
+  
 
         return(
            <ShopContext.Provider value={contextValue}>
