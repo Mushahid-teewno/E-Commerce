@@ -55,3 +55,52 @@
     color: #D0DDD0;
     background-color: black;
 }
+
+@media (max-width: 1024px) {
+    .popular h1 {
+        font-size: 42px;
+    }
+    .popular-item {
+        width: 95%;
+        gap: 15px;
+    }
+    .View-Collection button {
+        font-size: 18px;
+        padding: 12px 25px;
+    }
+}
+
+/* 🔹 Mobile Devices */
+@media (max-width: 768px) {
+    .popular {
+        padding: 30px 0;
+    }
+    .popular h1 {
+        font-size: 35px;
+    }
+    .popular-item {
+        width: 100%;
+        gap: 10px;
+    }
+    .View-Collection button {
+        font-size: 16px;
+        padding: 10px 20px;
+    }
+}
+
+/* 🔹 Small Mobile Screens */
+@media (max-width: 480px) {
+    .popular {
+        padding: 20px 0;
+    }
+    .popular h1 {
+        font-size: 30px;
+    }
+    .popular hr {
+        width: 15%;
+    }
+    .View-Collection button {
+        font-size: 14px;
+        padding: 8px 15px;
+    }
+}

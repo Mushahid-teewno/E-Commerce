@@ -38,3 +38,49 @@
     margin:  auto;
     margin-bottom: 30px;
 }
+
+
+
+@media (max-width: 1024px) {
+    .category-info {
+        margin: 40px 0 0 20px;
+    }
+    .category-info h1 {
+        font-size: 80px;
+    }
+    .category-items {
+        max-width: 90%;
+        row-gap: 50px;
+    }
+}
+
+/* 🔹 Mobile Devices */
+@media (max-width: 768px) {
+    .category-info {
+        margin: 30px ;
+        /* text-align: center; */
+    }
+    .category-info h1 {
+        font-size: 60px;
+    }
+    .category-items {
+        /* flex-direction: column; */
+        /* align-items: center; */
+
+        max-width: 100%;
+        /* row-gap: 40px; */
+    }
+}
+
+/* 🔹 Small Mobile Screens */
+@media (max-width: 480px) {
+    .category {
+        padding: 20px 10px;
+    }
+    .category-info h1 {
+        font-size: 45px;
+    }
+    .category-items {
+        /* row-gap: 30px; */
+    }
+}

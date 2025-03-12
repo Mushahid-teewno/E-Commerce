@@ -1,16 +1,106 @@
+/* General Styles */
+.cart-items-outer {
+    background-color: #D0DDD0;
+    padding: 80px 20px;
+    font-family: "Trirong", serif;
+}
+
+.cart-items {
+    width: 100%;
+    overflow-x: auto;
+}
+
+/* Grid layout for large screens */
+.headings, .sofa {
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr 1fr 1fr 1fr;
+    align-items: center;
+    text-align: center;
+    border: 1px solid #727D73;
+}
+
+.headings {
+    background-color: #B0BEA9;
+    color: #444945;
+    font-weight: bold;
+    height: 40px;
+}
+
+.sofa {
+    font-size: 16px;
+    font-weight: 500;
+    padding: 10px 5px;
+    border-top: none;
+}
+
+.sofa .product-img {
+    height: 80px;
+}
+
+.sofa button {
+    padding: 5px;
+    width: 30px;
+    background-color: inherit;
+    border: 1px solid black;
+    cursor: pointer;
+}
+
+.remove-icon {
+    width: 12px;
+    height: 12px;
+    cursor: pointer;
+}
+
+/* Cart Calculation Box */
+.cart-calc {
+    max-width: 400px;
+    margin-top: 50px;
+    text-align: center;
+    border: 1px solid #444945;
+    padding: 20px;
+}
+
+.cart-calc h1 {
+    background-color: #B0BEA9;
+    color: #444945;
+    padding: 10px;
+}
+
+.subtotals {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 0;
+}
+
+.cart-calc button {
+    padding: 13px;
+    font-size: 18px;
+    margin-top: 20px;
+    cursor: pointer;
+    background-color: inherit;
+    color: #444945;
+    border: 1px solid gray;
+    width: 100%;
+}
+
+.cart-calc button:hover {
+    background-color: black;
+    color: #B0BEA9;
+}
+/* Keep the existing design and only update responsiveness */
 .cart-items-outer{
     background-color: #D0DDD0;
     padding: 80px;
-    font-family: "trirong",serif;
+    font-family: "trirong", serif;
+    overflow-x: hidden;
 }
+
 .cart-items{
     width: 100%;
-    /* max-width: 80%; */
     padding: 0;
-    /* border:1px solid #727D73; */
- 
-    /* margin: 100px auto; */
 }
+
 .headings{
     display: grid;
     grid-template-columns: 1fr 2fr 1fr 1fr 1fr 1fr;
@@ -19,78 +109,70 @@
     color: #444945;
     border: 1px solid #727D73;
     height: 40px;
-    padding-left:6px ;
-
+    padding-left: 6px;
 }
+
 .headings p{
     font-weight: 600;
 }
+
 .sofa{
     font-size: 17px;
     font-weight: 550;
-    padding-top: 10px;
-    padding-left:8px ;
+    padding: 10px 8px;
     margin: 0;
     display: grid;
     grid-template-columns: 1fr 2fr 1fr 1fr 1fr 1fr;
     align-items: center;
-    
-    border:1px solid #727D73;
+    border: 1px solid #727D73;
     border-top: none;
-
-    
 }
-/* .cart-items hr{
-    width: 100vw;
-    height: 2px;
-    margin: 0;
-    grid-column: span 6;
-    margin-top: 10px;
-
-} */
 
 .sofa .product-img{
     height: 100px;
     margin-bottom: 10px;
 }
+
 .sofa button{
-    padding: 5px 5px;
+    padding: 5px;
     width: 30px;
     background-color: inherit;
     border: 1px solid black;
 }
+
 .remove-icon{
     width: 10px;
     height: 10px;
     cursor: pointer;
 }
+
 .cart-calc-outer{
     margin-top: 50px;
-    
 }
 
 .cart-calc{
     max-width: 400px;
-    /* margin: 100px auto; */
     display: flex;
     flex-direction: column;
     text-align: center;
-    /* padding: 20px; */
-    border:1px solid #444945;
+    border: 1px solid #444945;
     justify-content: space-between;
 }
+
 .cart-calc h1{
     background-color: #B0BEA9;
     color: #444945;
-    border-bottom:1px solid #444945;
+    border-bottom: 1px solid #444945;
 }
+
 .subtotals{
     display: flex;
     align-items: center;
     justify-content: space-between;
 }
+
 .price{
-    font-weight: 550;   
+    font-weight: 550;
 }
 
 .cart-calc button{
@@ -103,13 +185,65 @@
     border: 1px solid gray;
     width: 90%;
 }
+
 .cart-calc button:hover{
     background-color: black;
     color: #B0BEA9;
 }
+
 .subtotals-border-bottom-outer{
     padding: 20px;
 }
+
 .border-bottom{
     border-bottom: 1px solid black;
+}
+
+@media (max-width: 1024px) {
+    .headings{
+        font-size: 14px;
+        grid-template-columns: 1fr 1.5fr 1fr 1fr 1fr 1fr;
+    }
+    .sofa{
+        font-size: 14px;
+        grid-template-columns: 1fr 1.5fr 1fr 1fr 1fr 1fr;
+    }
+    .cart-calc{
+        max-width: 100%;
+    }
+}
+
+@media (max-width: 768px) {
+    .headings{
+        display: none;
+    }
+    .sofa{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 15px;
+        border: 1px solid #727D73;
+        margin-bottom: 10px;
+        width: 90%;
+        margin: 10px auto;
+    }
+    .sofa .product-img{
+        height: 80px;
+    }
+    .cart-calc{
+        width: 100%;
+        padding: 10px;
+    }
+}
+
+@media (max-width: 480px) {
+    .sofa{
+        width: 100%;
+    }
+    .sofa .product-img{
+        height: 60px;
+    }
+    .cart-calc button{
+        font-size: 16px;
+    }
 }

@@ -197,7 +197,7 @@
 @media (max-width: 480px) {
     .navbar {
         height: 70px;
-        padding: 0 10px;
+        padding: 0 ;
     }
 
     .logo h1 {
@@ -205,6 +205,7 @@
     }
 
     .nav-category {
+        right: -90px;
         width: 90px;
     }
 
