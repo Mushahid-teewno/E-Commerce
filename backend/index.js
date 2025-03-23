@@ -6,7 +6,7 @@ const multer = require("multer");
 const path = require("path");
 require('dotenv').config();
 const cors = require("cors");
-const { Product, User } = require("./mongoosemodel.js")
+const { Product, User, Review } = require("./mongoosemodel.js")
 
 app.use(express.json());
 app.use(cors());
@@ -41,6 +41,7 @@ app.post("/addproduct", async (req, res) => {
         const product = new Product({
             id: id,
             name: req.body.name,
+            about:req.body.about,
             category: req.body.category,
             new_price: req.body.new_price,
             old_price: req.body.old_price,
@@ -63,6 +64,22 @@ app.post("/addproduct", async (req, res) => {
         });
     }
 
+})
+
+//api for adding review
+
+app.post("/addreview", async (req,res)=>{
+    const review = new Review({
+        
+        name: req.body.name,
+        reviewText:req.body.reviewText,
+        email:req.body.email,
+        rating:req.body.rating,
+        productId:req.body.productId
+    })
+
+    const savedReview = await review.save()
+    res.send(savedReview)
 })
 
 //  api for removing product

@@ -15,10 +15,10 @@ export const Popular = () => {
         <h1>Popular in Women</h1>
         <hr />
         <div className='popular-item'>
-            {allProducts.map((item,i)=>{
-              if (item.category==='women') {
+           {allProducts.filter(item => item.category==='women').slice(0, 10).map((item, i) => { 
+             
                 return  <Item key={i} id= {item.id} des = {item.name} image={item.image} new_price={item.new_price} old_price={item.old_price} />
-              }
+              
               
             })}
         </div>

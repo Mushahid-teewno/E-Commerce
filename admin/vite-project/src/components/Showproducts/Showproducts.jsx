@@ -41,6 +41,7 @@ const Showproducts = () => {
       <div className='products-heading'>
         <p>Image</p>
         <p>Name</p>
+        <p>About</p>
         <p>Old Price</p>
         <p>New Price</p>
         <p>Category</p>
@@ -52,6 +53,7 @@ const Showproducts = () => {
           <div className='products'>
             <img className='product-image' src={product.image} alt="" />
             <h4>{product.name}</h4>
+            <h4>{product.about}</h4>
             <p>${product.old_price}</p>
             <p>${product.new_price}</p>
             <p>{product.category}</p>

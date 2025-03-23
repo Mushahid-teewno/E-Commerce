@@ -6,7 +6,7 @@
 }
 .products-heading{
     display: grid;
-    grid-template-columns: 2fr 8fr 1fr 1fr 1fr 1fr;
+    grid-template-columns: 2fr 4fr 4fr 1fr 1fr 1fr 1fr;
     gap: 25px;
     margin-top: 20px;
 }
@@ -15,7 +15,7 @@
 }
 .products{
     display: grid;
-    grid-template-columns: 2fr 6fr 1fr 1fr 1fr 1fr;
+    grid-template-columns: 2fr 2fr 4fr 1fr 1fr 1fr 1fr;
     gap: 25px;
     border: 1px solid black;
     border-top: none;

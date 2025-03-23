@@ -10,6 +10,10 @@ productSchema= new mongoose.Schema({
         type:String,
         required: true,
     },
+    about:{
+        type:String,
+        required: true,
+    },
     image:{
         type:String,
         required: true,
@@ -34,6 +38,28 @@ productSchema= new mongoose.Schema({
         type:Boolean,
         default:true
     },
+})
+
+reviewSchema = new mongoose.Schema({
+    name:{
+        type:String,
+        required:true
+    },
+    email:{
+        type:String,
+
+    },
+    reviewText:{
+        type:String,
+        required:true
+    },
+    productId:{
+        type:String,
+
+    },
+    rating:{
+        type:Number
+    }
 })
 
 userSchema = new mongoose.Schema({
@@ -63,5 +89,6 @@ userSchema = new mongoose.Schema({
 
 const Product = mongoose.model("Product", productSchema)
 const User = mongoose.model("User", userSchema)
+const Review = mongoose.model("Review", reviewSchema)
  
-module.exports = { Product, User };
+module.exports = { Product, User, Review};

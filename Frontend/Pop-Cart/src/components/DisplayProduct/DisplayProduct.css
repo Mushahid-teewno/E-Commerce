@@ -59,6 +59,14 @@
     display: flex;
     gap: 5px;
     flex-wrap: wrap;
+    margin-bottom: 8px;
+}
+.size-boxes:hover{
+    cursor: pointer;
+}
+.size-boxes .box{
+    border: 1px solid grey;
+    padding: 8px;
 }
 
 .add-to-cart-btn{
@@ -169,6 +177,7 @@
 
     .size-boxes{
         justify-content: center;
+        /* border: 1px solid grey; */
     }
 
     .add-to-cart-btn{

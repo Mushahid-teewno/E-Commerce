@@ -1,0 +1,99 @@
+@import url('https://fonts.googleapis.com/css2?family=Macondo&family=Sofia&family=Trirong:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+.search-results {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: 10px;
+    background-color: #D0DDD0;
+    padding: 50px 0;
+}
+
+.search-results h2 {
+    text-align: center;
+    font-size: 40px;
+    font-family: "Trirong", serif;
+    margin-bottom: 10px;
+}
+
+.search-results hr {
+    width: 10%;
+    height: 3px;
+    background-color: #AAB99A;
+    border-radius: 20px;
+    margin-bottom: 20px;
+}
+
+.product-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    width: 90%;
+}
+
+.item-card {
+    background-color: white;
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease-in-out;
+}
+
+.item-card:hover {
+    transform: scale(1.05);
+}
+
+.item-card img {
+    width: 100%;
+    border-radius: 10px;
+}
+
+.item-card h3 {
+    font-size: 20px;
+    font-family: "Trirong", serif;
+    text-align: center;
+    margin-top: 10px;
+}
+
+.item-card p {
+    font-size: 18px;
+    font-weight: bold;
+    text-align: center;
+}
+
+/* 🔹 Responsive Styling */
+@media (max-width: 1024px) {
+    .search-results h2 {
+        font-size: 42px;
+    }
+    .product-grid {
+        width: 95%;
+    }
+}
+
+@media (max-width: 768px) {
+    .search-results {
+        padding: 30px 0;
+    }
+    .search-results h2 {
+        font-size: 35px;
+    }
+    .product-grid {
+        width: 100%;
+        gap: 15px;
+    }
+}
+
+@media (max-width: 480px) {
+    .search-results {
+        padding: 20px 0;
+    }
+    .search-results h2 {
+        font-size: 30px;
+    }
+    .search-results hr {
+        width: 15%;
+    }
+}

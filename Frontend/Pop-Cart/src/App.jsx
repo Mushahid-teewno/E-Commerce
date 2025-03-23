@@ -9,6 +9,7 @@ import Cart from './pages/Cart'
 import LoginSignup from './pages/LoginSignup'
 import Shop from './pages/Shop'
 import Footer from './components/Footer/Footer'
+import SearchResults from './components/searchResults/searchResults'
 import Scroll from './components/scroll/scroll.jsx/scroll'
 
 
@@ -22,7 +23,7 @@ function App() {
      <Navbar/>
      <Routes>
       <Route path="/" element={<Shop/>} />
-      <Route path="/Men" element={<Category banner="Men" category="Men"/>} />
+      <Route path="/Men" element={<Category banner="Men" category="men"/>} />
       <Route path="/women" element={<Category banner="Women" category="women" />} />
       <Route path="/kids" element={<Category banner="Kids" category="kids"/>}  />
       <Route path="/product" element={<Product/>}>
@@ -30,6 +31,7 @@ function App() {
       </Route> 
       <Route path="/cart" element={<Cart/>} />
       <Route path="/login" element={<LoginSignup/>} />
+      <Route path="/search" element={<SearchResults/>} />
     </Routes>
     <Footer/>
     </BrowserRouter>

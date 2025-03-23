@@ -6,6 +6,7 @@ const Addproduct = () => {
   const [img, setImg] = useState(null)
   const [fieldData, setFieldData] = useState({
     name: "",
+    about : "",
     old_price: "",
     new_price: "",
     category: "Men",
@@ -66,6 +67,10 @@ const Addproduct = () => {
         <div className='field'>
           <p>Product Title</p>
           <input value={fieldData.name} onChange={handleChange} type="text" name="name" placeholder='add name here' />
+        </div>
+        <div className='field'>
+          <p>Short Description</p>
+          <input value={fieldData.about} onChange={handleChange} type="text" name="about" placeholder='about product' />
         </div>
         <div className='prices-div' >
           <div className='field'>

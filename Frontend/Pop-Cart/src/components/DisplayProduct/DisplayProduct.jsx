@@ -1,17 +1,47 @@
-import React, { useContext } from 'react'
+import React, { useContext,useState } from 'react'
 import './DisplayProduct.css'
 import star_icon from '../../assets/star_icon.png'
 import star_dull_icon from '../../assets/star_dull_icon.png'
 import { ShopContext } from '../../Context'
 
 
-const DisplayProduct = ({ product }) => {
+const DisplayProduct =  ({ product }) => {
 
     const { addToCart } = useContext(ShopContext)
+    const [reviewData, setReviewData] = useState({
+        name: '',
+        email: '',
+        rating: 5,
+        reviewText: '',
+        productId: product?.id
+    });
+
+
+    const handleChange = (e) => {
+        setReviewData({ ...reviewData , [e.target.name]: e.target.value});
+    };
+    const addReview = async  () =>{
+        const response =  await fetch('http://localhost:3000/addreview',{
+            method:'POST',
+             headers:{
+               accept:'application/json',
+               'content-type':'application/json'
+             },
+             body:JSON.stringify(reviewData),
+           })
+
+           const result = await response.json()
+           console.log(result)
+           
+    }
+    
+    
+
+   
     if (!product) {
         return <p>Loading product...</p>; // Prevents crash
     }
-    console.log(product)
+    
     return (
         <div className='display-product-parent'>
             <div className='display-product'>
@@ -41,7 +71,7 @@ const DisplayProduct = ({ product }) => {
                         <p className='new-price'>${product.new_price}</p>
                     </div>
                     <div className="description">
-                        <h3>A timeless look with a button-down collar, single chest pocket, and neatly stitched cuffs. Perfect for both formal and casual styles.</h3>
+                        <h3>{product.about}.</h3>
 
                         <p>Select size</p>
                         <div className="size-boxes">
@@ -93,20 +123,20 @@ const DisplayProduct = ({ product }) => {
                                 <img src={star_icon} alt="" />
                             </div>
                             <h3>Your review *</h3>
-                            <textarea rows={6} name="" id=""></textarea>
+                            <textarea rows={6} name="reviewText" value={reviewData.reviewText} onChange={handleChange} id=""></textarea>
                             <div className='reviews-info'>
                                 <div>
                                     <p>Name *</p>
-                                    <input type="text" />
+                                    <input name="name" value={reviewData.name} onChange={handleChange} type="text" />
                                 </div>
                                 <div>
                                     <p>Email *</p>
-                                    <input type="text" />
+                                    <input name="email" value={reviewData.email} onChange={handleChange} type="text" />
                                 </div>
                             </div>
                             <input className='review-checkbox' type="checkbox" name="" id="" />
                             <p style={{ display: 'inline-block' }}>save my name, email for the next time I comment</p>
-                            <button>Submit</button>
+                            <button onClick={addReview}>Submit</button>
                         </div>
                     </div>
                 </div>

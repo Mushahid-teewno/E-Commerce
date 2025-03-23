@@ -1,17 +1,22 @@
-import React, { useState, useEffect, useContext } from 'react'
+import React, { useState, useEffect,useRef, useContext } from 'react'
 import './Navbar.css'
 import logo from '../../assets/logo.png'
 import cart_icon from '../../assets/cart_icon.png'
 import { Link, useLocation } from 'react-router-dom'
 import { ShopContext } from '../../Context'
+import { FiSearch } from 'react-icons/fi';
 
 
 const Navbar = () => {
   const [State, setState] = useState('shop');
   const { totalItems } = useContext(ShopContext)
   const [menuOpen, setMenuOpen] = useState(false);
+  const [searchQuery, setSearchQuery] = useState(''); 
+  const [isOpen, setIsOpen] = useState(false); 
+
 
   const location = useLocation();
+  const searchRef = useRef(null);
 
   useEffect(() => {
     if (location.pathname === '/') setState('shop');
@@ -19,6 +24,36 @@ const Navbar = () => {
     else if (location.pathname === '/women') setState('women');
     else if (location.pathname === '/kids') setState('kids');
   }, [location.pathname]);
+
+
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+     
+       console.log("Search Bar Element:", searchRef.current); 
+       if (isOpen && searchRef.current && !searchRef.current.contains(event.target)) {
+         setIsOpen(false);
+       }
+      
+    };
+
+    document.addEventListener('click', handleClickOutside);
+    return () => {
+      document.removeEventListener('click', handleClickOutside);
+    };
+  }, [isOpen]);
+
+
+  const handleSearchChange = (e) => {
+    setSearchQuery(e.target.value);
+  };
+
+
+  const handleSearchSubmit = (e) => {
+    e.preventDefault();
+    if (searchQuery.trim() !== '') {
+      window.location.href = `/search?query=${searchQuery}`; // Redirecting to search page
+    }
+  };
 
 
   return (
@@ -46,6 +81,9 @@ const Navbar = () => {
         </ul>
       </div> */}
 
+      {/* Search Bar */}
+     
+
       <div className={`nav-category ${menuOpen ? 'open' : ''}`}>
         <ul>
         <span className="close-btn" onClick={() => setMenuOpen(false)}>
@@ -57,7 +95,24 @@ const Navbar = () => {
           <li onClick={() => { setState('kids') ,setMenuOpen(false)}}><Link style={{ textDecoration: "none", color: 'inherit' }} to='/kids'>Kids</Link> {State === 'kids' ? <hr /> : <></>}</li>
         </ul>
       </div>
+      
+     
       <div className='login'>
+      <div ref={searchRef} className='search-container'>
+      <FiSearch className={`search-icon ${isOpen ? 'disapear' : ''}`} onClick={() => setIsOpen(!isOpen)} />
+      {isOpen && (
+        <form className='search-bar' onSubmit={handleSearchSubmit}>
+          <input 
+            type='text' 
+            placeholder='Search products...' 
+            value={searchQuery} 
+            onChange={handleSearchChange} 
+            autoFocus 
+          />
+          <button type='submit'>Search</button>
+        </form>
+      )}
+      </div>
         {localStorage.getItem('authToken')
           ? <button onClick={()=>{localStorage.removeItem('authToken'),window.location.reload();}}>Logout</button>
           : <Link style={{ textDecoration: "none" }} to='/login'><button>Login</button></Link>}
